@@ -1,0 +1,34 @@
+.videos{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3px;
+}
+.video{
+    background-color: black;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;
+    
+}
+.call-controls{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.call-controls button{
+    width: 10vw;
+    padding: 1rem;
+}
+.call-controls textarea{
+    width: 100%;
+    height: 50%;
+    resize: none;
+}
+.call-btns
+{
+    margin-bottom: 2px;
+}
+.title{
+    text-align: center;
+}

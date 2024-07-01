@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css"> 
+</head>
+<body>
+    <h1 class="title">WebRTC handshake without signalling SDP</h1>
+    <div class="how-to-use">
+        <ul>
+            <h3>How to use ?</h3>
+            <li>Open client 1</li>
+            <li>Click create offer</li>
+            <li>A SDP will be generated in the second text box copy it</li>
+            <li>Open client 2</li>
+            <li>Now paste the copied SDP into the 1st textbox and hit set offer</li>
+            <li>Now a Answer SDP will be generated in the second text box copy it</li>
+            <li>Open client 1</li>
+            <li>Now paste the Answer SDP into the first text box and hit set offer</li>
+        </ul>
+    </div>
+    <div>
+        <div class="videos">
+            <video class="video"  id="video1" autoplay playsinline></video>
+            <video  class="video" id="video2" autoplay playsinline></video>
+        </div>
+        <div class="call-controls">
+            <div class="call-btns">
+                <button onclick="setOffer()">Set Offer</button>
+                <button onclick="setAnswer()">set Answer</button>
+                <button onclick="createOffer()">Create Offer</button>
+                <button onclick="sendMessage()">Send Message</button>
+            </div>
+            <div class="text-fill">
+        <textarea id="text1" rows="5"></textarea>
+        <textarea id="text2" rows="5"></textarea>
+    
+    </div>
+   
+    </div>
+   
+    </div>
+    
+    <script src="./app.js"></script>
+</body>
+</html>
