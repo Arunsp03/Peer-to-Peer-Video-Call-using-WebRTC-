@@ -6,7 +6,7 @@ const localVideo = document.getElementById('video1');
 const remoteVideo = document.getElementById('video2');
 async function init() {
    
-    localstream=await navigator.mediaDevices.getUserMedia({video:true,audio:false})
+    localstream=await navigator.mediaDevices.getUserMedia({video:true,audio:true})
     remotestream=new MediaStream();
     localVideo.srcObject=localstream
     remoteVideo.srcObject=remotestream
