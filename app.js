@@ -2,11 +2,14 @@ const localConnection = new RTCPeerConnection();
 // let sendChannel;
 let localstream;
 let remotestream;
+let recognition;
+let speechRecognitions = [];
+let finalTranscript = '';
 const localVideo = document.getElementById('video1');
 const remoteVideo = document.getElementById('video2');
 async function init() {
    
-    localstream=await navigator.mediaDevices.getUserMedia({video:true,audio:true})
+    localstream=await navigator.mediaDevices.getUserMedia({video:false,audio:true})
     remotestream=new MediaStream();
     localVideo.srcObject=localstream
     remoteVideo.srcObject=remotestream
@@ -40,10 +43,32 @@ async function init() {
        sendChannel.onopen = () => console.log("Data channel opened");
        sendChannel.onclose = () => console.log("Data channel closed");
     };
+    startSpeechRecognition(sendChannel);
 
 
-    //console.log("Local connection initialized.");
 }
+
+
+function startSpeechRecognition(sendChannel) {
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onresult = (event) => {
+        const saidWord = event.results[event.results.length - 1][0].transcript;
+        sendChannel.send("received message: " + saidWord);
+    };
+
+    recognition.onerror = (event) => {
+        console.log('Speech recognition error:', event.error);
+    };
+
+    recognition.start();
+}
+
+
+
+
 
 function createOffer() {
     localConnection.createOffer()
